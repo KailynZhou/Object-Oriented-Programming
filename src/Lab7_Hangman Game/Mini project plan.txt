@@ -1,0 +1,23 @@
+ * Name: Jieping Zhou; Student Number: 24250243
+ * Name: Eoghan Rainey; Student Number: 25259006
+
+(1)Game Features
+-Read words from words.txt
+-Randomly select a word for each game
+-Display the word using underscores (_)
+-Allow players to guess one letter at a time
+-Validate user input (letters only)
+-Track incorrect guesses
+-End game when:
+    -The word is guessed correctly, or
+    -Attempts reach zero
+
+(2)Scoring System
+-Score is calculated based on remaining attempts
+-Higher remaining attempts = higher score
+
+(3)High Score System
+-Prompt player to enter their name after the first playing
+-Save scores to highscores.txt using append mode
+-Store data in CSV format (name,score)
+

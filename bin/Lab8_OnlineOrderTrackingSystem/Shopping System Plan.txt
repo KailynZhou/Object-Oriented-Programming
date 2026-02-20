@@ -1,0 +1,91 @@
+Name: Jieping Zhang 24250243，Name: Christopher Kearney 25259037
+Project Overview
+The system tracks orders through different states and includes order cancellation functionality with automatic tracking of cancelled orders.
+ 
+Class Structure
+
+OrderRequest (Abstract Base Class)
+├── Processing
+├── Shipped
+├── OutForDelivery
+└── Delivered
+
+OrderService (Service Layer)
+├── Order Cancellation Management
+└── Cancelled Orders Tracking
+
+
+Order States and Rules
+
+| State                | Description             | Can Cancel? |
+| -------------------- | ----------------------- | ----------- |
+| **Processing**       | Order is being prepared | ✅ YES      |
+| **Shipped**          | Package is in transit   | ❌ NO       |
+| **Out for Delivery** | With delivery person    | ❌ NO       |
+| **Delivered**        | Successfully delivered  | ❌ NO       |
+
+
+
+File Descriptions
+
+ Core Classes
+
+1. **OrderRequest.java** (Abstract Base Class)
+   - Defines common properties: orderID, shopName, itemName, custName, itemQuantity, totalPrice
+   - Abstract methods:
+     - `getStatus()`: Returns current order status
+     - `isCancelable()`: Determines if order can be cancelled
+   - Concrete methods:
+     - `printSummary()`: Displays order details
+     - `cancel()`: Default cancellation behavior (returns this)
+   - Getter methods for all properties
+
+2. **Processing.java** (State Class)
+   - Represents orders being prepared
+   - Additional properties: customer address
+   - **Cancellation Rule**: ✅ CAN be cancelled
+   - Status includes: delivery date, company name, customer address
+
+3. **Shipped.java** (State Class)
+   - Represents orders in transit
+   - Additional properties: tracking number, shipping company, estimated delivery date
+   - **Cancellation Rule**: ❌ CANNOT be cancelled
+   - Status includes: tracking information and delivery estimate
+
+4. **OutForDelivery.java** (State Class)
+   - Represents orders with delivery person
+   - Additional properties: delivery person name, estimated delivery time
+   - **Cancellation Rule**: ❌ CANNOT be cancelled
+   - Status includes: delivery person and time window
+
+5. **Delivered.java** (State Class)
+   - Represents completed orders
+   - Additional properties: actual delivery date, signature name
+   - **Cancellation Rule**: ❌ CANNOT be cancelled
+   - Status includes: delivery confirmation details
+
+6. **OrderService.java** (Service Layer)
+   - Manages order cancellation operations
+   - Key methods:
+     - `cancelOrderById()`: Cancels an order by ID if cancelable
+       - ✅ Success: Removes from active orders, adds to cancelled list, displays cancelled orders
+       - ❌ Failure: Shows warning message explaining why order cannot be cancelled
+     - `getCancelableOrders()`: Returns list of orders that can be cancelled
+     - `printCancelledOrders()`: Displays complete history of cancelled orders
+     - `getCancelledOrdersList()`: Returns copy of cancelled orders list
+     - `getCancelledOrdersCount()`: Returns number of cancelled orders
+     - `clearCancelledOrders()`: Clears cancelled orders history
+   - Maintains static list of cancelled orders
+
+7. **OrderTracker.java** (Main Application)
+   - Main class demonstrating the system
+   - Methods:
+     - `printDashboard()`: Displays all active orders
+     - `main()`: Demonstrates full system functionality including:
+       - Order creation in different states
+       - Initial dashboard display
+       - Order cancellation attempts (both successful and failed)
+       - Cancelled orders tracking
+       - Final summary statistics
+
+---
