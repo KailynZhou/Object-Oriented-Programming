@@ -1,0 +1,70 @@
+====================================================================
+GENERIC BOX SYSTEM - MINI PROJECT PLAN
+====================================================================
+Name: JiepingZhou, 24250243
+Name: JOHN QUINN, 25259001
+
+Purpose: Demonstrate fundamental Java generics concepts through a 
+         practical container system with type-safe operations
+====================================================================
+PROJECT STRUCTURE
+====================================================================
+
+Phase 1: Core Classes
+---------------------------------------------------------------------
+✓ Product.java
+  - Base class for all products
+  - Properties: name, price
+  - Methods: getName(), getPrice(), toString()
+  - Purpose: Provide common interface for all product types
+
+✓ Book.java (extends Product)
+  - Additional properties: author, pages
+  - Methods: getAuthor(), getPages()
+  - Purpose: Demonstrate specific product type with unique properties
+
+✓ Fruit.java (extends Product)
+  - Additional properties: weight (grams), harvest date
+  - Methods: getWeight(), getDate()
+  - Purpose: Another specific product type for filtering examples
+
+✓ Box.java (Generic Container)
+  - Type parameter: <T>
+  - Properties: private T item
+  - Methods: set(T), get(), printItemType(), toString()
+  - Purpose: Type-safe generic container for any type
+
+Phase 2: Advanced Generics
+---------------------------------------------------------------------
+✓ ProductFilter.java (Bounded Generic)
+  - Type parameter: <T extends Product>
+  - Methods:
+    * filterByName(List<T>, String) → List<T>
+    * filterByMaxPrice(List<T>, double) → List<T>
+    * filterBy(List<T>, Predicate<T>) → List<T>
+  - Purpose: Demonstrate bounded generics and predicates
+
+Phase 3: Demonstration Programs
+---------------------------------------------------------------------
+✓ GenericsDemo01.java
+  - Demonstrates basic Box<T> usage
+  - Shows type safety at compile time
+  - Creates Box<Product>, Box<Fruit>, Box<Book>
+  - Shows what happens with empty boxes
+  - Commented examples of compile errors
+
+✓ GenericsDemo02_TypeHierarchy.java
+  - Shows inheritance with Product hierarchy
+  - Demonstrates upcasting (Book → Product)
+  - Shows loss of subclass methods after upcasting
+  - Demonstrates downcasting with instanceof check
+  - Purpose: Explain why generics preserve types
+
+✓ GenericsDemo03_Predicates.java
+  - Combines generics with functional programming
+  - Uses Predicate<T> with lambda expressions
+  - Filters books by page count
+  - Filters fruits by weight
+  - Purpose: Show how generics enable type-safe lambdas
+
+

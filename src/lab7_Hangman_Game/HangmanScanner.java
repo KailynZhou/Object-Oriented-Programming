@@ -1,4 +1,4 @@
-package Lab7;
+package lab7_Hangman_Game;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
