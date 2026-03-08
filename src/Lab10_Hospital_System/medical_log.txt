@@ -1,0 +1,3 @@
+[2026-03-08 14:44:28] Patient #1004 | REGISTERED: Jieping Zhou
+[2026-03-08 14:48:40] Patient #1004 | APPOINTMENT SCHEDULED: 2026-03-11 1:00 - I want to make an appointment with doctor
+[2026-03-08 14:51:10] Patient #1004 | PRESCRIBED: Paracetamol 1.0mg by Dr. Wang
